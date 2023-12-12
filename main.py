@@ -26,7 +26,7 @@ def create_contact():
     phone = phone_input()
     address = address_input()
 
-    return f'{surname} {name} {patronymic} {phone}\n{address}\n'
+    return f'{surname} {name} {patronymic} {phone} {address}\n'
 
 def write_contact():
     contact = create_contact()
@@ -36,14 +36,14 @@ def write_contact():
 
 def print_contacts():
     '''List all entries'''
-    # with open('phonebook.txt', 'r' , encoding='utf-8') as file:
-    #     print('----------------------')
-    #     print(file.read())
-    #     print('----------------------')
     with open('phonebook.txt', 'r' , encoding='utf-8') as file:
-        contacts_list = file.read().rstrip().split('\n\n')
-        for nn , contact in enumerate(contacts_list, 1):
-            print(f'{nn}. {contact}\n')
+        print('----------------------')
+        print(file.read())
+        print('----------------------')
+    # with open('phonebook.txt', 'r' , encoding='utf-8') as file:
+    #     contacts_list = file.read().rstrip().split('\n\n')
+    #     for nn , contact in enumerate(contacts_list, 1):
+    #         print(f'{nn}. {contact}\n')
 
 def search_contact(field=''):
     ''''''
@@ -70,6 +70,17 @@ def search_contact(field=''):
         if search in contact_list[index_var]:
             print(f'\n{contact_str}\n')
 
+def copy_line():
+    
+    with open('phonebook.txt', 'r' , encoding='utf-8') as file:
+        lines = file.readlines()
+
+    line_number = int(input('Введите номер данных для копии: ')) 
+
+    with open('phonebook1.txt', 'a' , encoding='utf-8') as file:
+        file.write(lines[line_number - 1])
+
+    print('\nУспешное копирование\n')
 
 def interface():
     with open('phonebook.txt', 'a'):
@@ -77,18 +88,19 @@ def interface():
 
 
     user_input = None
-    while user_input != '4':
+    while user_input != '5':
         print(
             'Возможные варианты действия:\n'
             '1. Добавить контакт\n'
             '2. Вывод списка контактов\n'
             '3. Поиск контакта\n'
-            '4. Выход из программы\n'
+            '4. Копирование данных\n'
+            '5. Выход из программы\n'
         )
 
         user_input = input('Введите вариант: ')
 
-        while user_input not in ('1', '2', '3', '4'):
+        while user_input not in ('1', '2', '3', '4' , '5'):
             print('Некорректный ввод.')
             user_input = input('Введите вариант: ')
 
@@ -101,6 +113,8 @@ def interface():
                 print_contacts()
             case '3':
                 search_contact()
+            case '4':
+                copy_line()
         
 if __name__ == '__main__':
     interface()
