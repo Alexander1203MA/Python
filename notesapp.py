@@ -58,3 +58,12 @@ def show_note():
             print(f"Дата создания: {note['date']}")
             return
     print("Заметка с таким ID не найдена.")
+
+def show_date_notes():
+    date = input("Введите дату в формате YYYY-MM-DD: ")
+    filtered_notes = filter_notes_by_date(notes, date)
+    for note in filtered_notes:
+        print(f"ID: {note['id']}, Заголовок: {note['title']}, Дата создания: {note['date']}")
+
+def filter_notes_by_date(notes, date):
+    return [note for note in notes if note["date"].startswith(date)]
