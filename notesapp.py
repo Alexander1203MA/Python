@@ -71,3 +71,34 @@ def filter_notes_by_date(notes, date):
 def show_notes():
     for note in notes:
         print(f"ID: {note['id']}, Заголовок: {note['title']}, Текст: {note['body']}, Дата создания: {note['date']}")
+
+notes = load_notes()
+
+user_input = None
+while user_input != '7':
+    print("\n1. Добавление заметки")
+    print("2. Редактирование заметки")
+    print("3. Удаление заметки")
+    print("4. Поиск заметки по ID")
+    print("5. Поиск заметки по дате")
+    print("6. Показать список заметок")
+    print("7. Выход")
+    choice = input("Выберите действие: ")
+
+    match choice:
+        case  "1":
+            add_note()
+        case  "2":
+            edit_note()
+        case "3":
+            delete_note()
+        case  "4":
+            show_note()
+        case  "5":
+            show_date_notes()
+        case  "6":
+            show_notes()
+        case  "7":
+            break
+        case _:
+            print("Неверный ввод.")
