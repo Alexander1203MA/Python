@@ -67,3 +67,7 @@ def show_date_notes():
 
 def filter_notes_by_date(notes, date):
     return [note for note in notes if note["date"].startswith(date)]
+
+def show_notes():
+    for note in notes:
+        print(f"ID: {note['id']}, Заголовок: {note['title']}, Текст: {note['body']}, Дата создания: {note['date']}")
