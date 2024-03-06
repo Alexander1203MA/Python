@@ -11,3 +11,16 @@ def load_notes():
         return []
     with open("notes.json", "r") as file:
         return json.load(file)
+    
+def add_note():
+    title = input("Введите заголовок заметки: ")
+    body = input("Введите текст заметки: ")
+    note = {
+        "id": len(notes) + 1,
+        "title": title,
+        "body": body,
+        "date": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    }
+    notes.append(note)
+    save_notes(notes)
+    print("Заметка добавлена.")
