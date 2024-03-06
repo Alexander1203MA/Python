@@ -86,3 +86,21 @@ while user_input != '7':
     print("6. Показать список заметок")
     print("7. Выход")
     choice = input("Выберите действие: ")
+
+    match choice:
+        case  "1":
+            add_note()
+        case  "2":
+            edit_note()
+        case "3":
+            delete_note()
+        case  "4":
+            show_note()
+        case  "5":
+            show_date_notes()
+        case  "6":
+            show_notes()
+        case  "7":
+            break
+        case _:
+            print("Неверный ввод.")
