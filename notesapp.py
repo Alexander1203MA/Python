@@ -38,3 +38,13 @@ def edit_note():
             print("Заметка отредактирована.")
             return
     print("Заметка с таким ID не найдена.")
+
+def delete_note():
+    note_id = int(input("Введите ID заметки для удаления: "))
+    for note in notes:
+        if note["id"] == note_id:
+            notes.remove(note)
+            save_notes(notes)
+            print("Заметка удалена.")
+            return
+    print("Заметка с таким ID не найдена.")
